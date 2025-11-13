@@ -132,7 +132,7 @@ export class UsersController {
   @Delete(':id')
   async remove(@Param('id') id: string) {
     try {
-      const result = await this.UsersService.remove(+id);
+      const result = await this.UsersService.delete(+id);
       return {
         status: '200',
         succes: true,

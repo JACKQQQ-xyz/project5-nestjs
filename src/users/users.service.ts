@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
-import { PrismaClient } from 'generated/prisma/client';
+import { PrismaService } from 'prisma/prisma.service';
+import { PrismaClient } from '@prisma/client';
 import { createUsersDto } from './dto/createUsers.dto';
 import { updateUsersDto } from './dto/updateUsers.dto';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async findAll() {
-    return this.prisma.name.findMany();
+    return this.prisma.user.findMany();
   }
 
   async findOne(id: number) {
@@ -58,5 +58,5 @@ export class UsersService {
     } catch (error) {
       throw new Error(`Failed to delete user: ${error.message}`);
     }
-}
+  }
 }
